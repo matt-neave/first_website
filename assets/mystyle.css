@@ -1,0 +1,100 @@
+body {
+  background: url(tessolation.png) repeat;
+  
+
+}
+
+h1 { 
+	/*background-color: red;*/
+	text-align: center;
+}
+
+/*.boxed { 
+  margin: 2px;
+  width: 200px;
+  height: 34px;
+  border: 1px solid green;
+  box-sizing: border-box;
+}
+*/
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #00FFFF;
+}
+
+li {
+    float: left;
+    border-right: 1px solid #008b8b;
+}
+
+li:last-child {
+	border-right: none;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+
+li a:hover {
+    background-color: #008b8b;
+}
+
+.active {
+    background-color: #008b8b;
+}
+
+.profilePicture{
+	border-radius: 50%;
+	border: 1px solid black;
+}
+
+.profilePicture:hover{
+	transition-duration: 1s;
+	transform: scale(2.0);
+	transform: rotate(360deg);
+}
+
+
+	
+.transbox {
+  margin: 30px;
+  background-color: #ffffff;
+  border: 1px solid black;
+  opacity: 0.6;
+	  filter: alpha(opacity=60);
+}
+
+.transbox p {
+  margin: 5%;
+  font-weight: bold;
+  color: #000000;
+}
+
+
+.my-button-css {
+    background-color: #00FFFF; 
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 2px;
+    -webkit-transition-duration: 0.4s; 
+    transition-duration: 0.4s;
+}
+
+.my-button-css:hover {
+    background-color: #008b8b; 
+    color: white;
+}
