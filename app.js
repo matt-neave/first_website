@@ -7,6 +7,9 @@ app.use(express.static('assets'));
 app.use(bodyParser.json({limit: '20mb'}));
 app.use(bodyParser.urlencoded({extended: true, limit: '20mb'}));
 
+
+ledstatus = "off";
+
 app.get('/', function (req, res) {
     res.sendfile('assets/index.html');
 });
@@ -25,7 +28,12 @@ app.get('/motion', function(req, res) {
 });
 
 app.get('/ledstatus', function(req, res) {
-	res.send({ledstatus: "on"})
+	if ledstatus === "on" {
+		ledstatus = "off";
+	} else {
+		ledstatus = "on";
+	}
+	res.send({ledstatus: ledstatus})
 });
 
 var port = process.env.PORT || 3000;
