@@ -28,12 +28,12 @@ app.get('/motion', function(req, res) {
 });
 
 app.get('/ledstatus', function(req, res) {
-	if ledstatus === "on" {
+	if (ledstatus === "on") {
 		ledstatus = "off";
 	} else {
 		ledstatus = "on";
 	}
-	res.send({ledstatus: ledstatus})
+	res.send({ledstatus: ledstatus});
 });
 
 var port = process.env.PORT || 3000;
