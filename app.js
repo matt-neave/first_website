@@ -24,6 +24,10 @@ app.get('/motion', function(req, res) {
 	
 });
 
+app.get('ledstatus', function(req, res) {
+	res.send({ledstatus: "on"})
+});
+
 var port = process.env.PORT || 3000;
 
 var server = app.listen(port, function () {
