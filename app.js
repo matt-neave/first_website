@@ -28,6 +28,10 @@ app.get('/motion', function(req, res) {
 });
 
 app.get('/ledstatus', function(req, res) {
+	res.send({ledstatus: ledstatus});
+});
+
+app.post('/ledstatus', function(req, res) {
 	if (ledstatus === "on") {
 		ledstatus = "off";
 	} else {
