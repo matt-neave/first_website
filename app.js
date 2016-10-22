@@ -24,7 +24,7 @@ app.get('/motion', function(req, res) {
 	
 });
 
-app.get('ledstatus', function(req, res) {
+app.get('/ledstatus', function(req, res) {
 	res.send({ledstatus: "on"})
 });
 
