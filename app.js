@@ -17,11 +17,11 @@ app.get('/gifs', function (req, res) {
 
 app.get('/motion', function(req, res) {
 	console.log("Motion detected");
-	//request("https://maker.ifttt.com/trigger/web_button_is_pressed/with/key/l9uHDHqqI570kbcVJ9_jFummpIxMaD069ZRJXvCHLuW", function (error, response, body) {
-	//	console.log('E-mail sent');
-	//	res.send(200);
-	//});
-	//
+	request("https://maker.ifttt.com/trigger/web_button_is_pressed/with/key/l9uHDHqqI570kbcVJ9_jFummpIxMaD069ZRJXvCHLuW", function (error, response, body) {
+		console.log('E-mail sent');
+		res.send(200);
+	});
+	
 });
 
 var port = process.env.PORT || 3000;
