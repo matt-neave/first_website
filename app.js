@@ -44,6 +44,15 @@ app.post('/ledstatus', function(req, res) {
 	res.send({ledstatus: ledstatus});
 });
 
+app.post('/ledstatus1', function(req, res) {
+	if (ledstatus1 === "on") {
+		ledstatus1 = "off";
+	} else {
+		ledstatus1 = "on";
+	}
+	res.send({ledstatus1: ledstatus1});
+});
+
 var port = process.env.PORT || 3000;
 
 var server = app.listen(port, function () {
