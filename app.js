@@ -43,8 +43,7 @@ app.post('/ledstatus', function(req, res) {
 	res.send({ledstatus: ledstatus});
 });
 
-dstatus: ledstatus});
-});
+
 
 var port = process.env.PORT || 3000;
 
