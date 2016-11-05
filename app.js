@@ -31,6 +31,10 @@ app.get('/ledstatus', function(req, res) {
 	res.send({ledstatus: ledstatus});
 });
 
+app.get('/ledstatus1', function(req, res) {
+	res.send({ledstatus1: ledstatus1});
+});
+
 app.post('/ledstatus', function(req, res) {
 	if (ledstatus === "on") {
 		ledstatus = "off";
