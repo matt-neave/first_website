@@ -40,7 +40,7 @@ app.post('/ledstatus', function(req, res) {
 	} else {
 		ledstatus = "green";
 	}
-	res.send({ledstatus: ledstatus});
+	res.sendfile('assets/index.html')
 });
 
 
