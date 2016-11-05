@@ -8,7 +8,8 @@ app.use(bodyParser.json({limit: '20mb'}));
 app.use(bodyParser.urlencoded({extended: true, limit: '20mb'}));
 
 
-ledstatus = "off";
+ledstatus = "green";
+
 
 app.get('/', function (req, res) {
     res.sendfile('assets/index.html');
@@ -31,26 +32,18 @@ app.get('/ledstatus', function(req, res) {
 	res.send({ledstatus: ledstatus});
 });
 
-app.get('/ledstatus1', function(req, res) {
-	res.send({ledstatus1: ledstatus1});
-});
+
 
 app.post('/ledstatus', function(req, res) {
-	if (ledstatus === "on") {
-		ledstatus = "off";
+	if (ledstatus === "green") {
+		ledstatus = "red";
 	} else {
-		ledstatus = "on";
+		ledstatus = "green";
 	}
 	res.send({ledstatus: ledstatus});
 });
 
-app.post('/ledstatus1', function(req, res) {
-	if (ledstatus1 === "on") {
-		ledstatus1 = "off";
-	} else {
-		ledstatus1 = "on";
-	}
-	res.send({ledstatus1: ledstatus1});
+dstatus: ledstatus});
 });
 
 var port = process.env.PORT || 3000;
