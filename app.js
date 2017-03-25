@@ -9,7 +9,7 @@ app.use(bodyParser.urlencoded({extended: true, limit: '20mb'}));
 
 
 ledstatus = "green";
-
+location = "unknown";
 
 app.get('/', function (req, res) {
     res.sendfile('assets/index.html');
@@ -34,6 +34,16 @@ app.get('/ledstatus', function(req, res) {
 
 
 
+app.post('/location', function(req, res) {
+	location = req.body.location;
+	console.log("Location changed to", location);
+	res.send(200);
+});
+
+app.get('/location', function(req, res) {
+	res.send({"location": location});
+});
+
 app.post('/ledstatus', function(req, res) {
 	if (ledstatus === "green") {
 		ledstatus = "red";
@@ -42,8 +52,6 @@ app.post('/ledstatus', function(req, res) {
 	}
 	res.sendfile('assets/index.html')
 });
-
-
 
 var port = process.env.PORT || 3000;
 
