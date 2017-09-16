@@ -44,10 +44,11 @@ var ballDir;
 var ballDirX;
 var ballSpeed;
 var ballSize; 
+var lives; 
 
 function create() {
 
-    //  We're going to be using physics, so enable the Arcade Physics system
+  
     game.physics.startSystem(Phaser.Physics.ARCADE);
     
     game.add.sprite(0, 0, 'sky');
@@ -60,14 +61,14 @@ function create() {
     ballDir = -ballSpeed;
     ballDirX = ballSpeed;
 
-
+    lives = 3;
+    
     ballSize = 10
     ball = game.add.sprite(ballSize, ballSize, 'circle');
     
     ball.x = 400;
     ball.y = 20;
-  //  game.physics.arcade.enable(paddle);
-    //game.physics.arcade.enable(ball);
+  
 }
 
 function update() {
