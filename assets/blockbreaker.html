@@ -1,0 +1,88 @@
+<!doctype html> 
+<html lang="en"> 
+<head> 
+	<meta charset="UTF-8" />
+    <title>Phaser - Making your first game, part 9</title>
+	<script type="text/javascript" src="js/phaser.min.js"></script>
+    <style type="text/css">
+        body {
+            margin: 0;
+        }
+        
+        canvas {
+            cursor: none;
+        }
+        
+    </style>
+</head>
+<body>
+
+<script type="text/javascript">
+    
+
+var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create, update: update });
+
+function preload() {
+
+    game.load.image('sky', 'assets/sky.png');
+    game.load.image('paddle', 'assets/reactangle.jpg');
+    game.load.image('circle', 'assets/circle.png');
+
+}
+
+var paddle; 
+var paddleWidth
+var ball; 
+var ballDir;
+var ballSpeed;
+var ballSize; 
+
+function create() {
+
+    //  We're going to be using physics, so enable the Arcade Physics system
+    game.physics.startSystem(Phaser.Physics.ARCADE);
+    
+    game.add.sprite(0, 0, 'sky');
+    
+    paddleWidth = 200
+    paddle = game.add.sprite(200  ,500, 'paddle');
+    
+    
+    ballSpeed = 5
+    ballDir = -ballSpeed;
+
+
+    ballSize = 10
+    ball = game.add.sprite(ballSize, ballSize, 'circle');
+    
+    ball.x = 400;
+    ball.y = 20;
+  //  game.physics.arcade.enable(paddle);
+    //game.physics.arcade.enable(ball);
+}
+
+function update() {
+
+    paddle.x = game.input.mousePointer.x - (paddle.width/2);
+    ball.y -= ballDir;
+    
+    
+    if (ball.y + ballSize> paddle.y - ballSize && ball.x > paddle.x && ball.x + ballSize < paddle.x + paddleWidth){
+        ballDir = ballSpeed;
+    }
+    
+    
+    if (ball.y < 0){
+        ballDir = -ballSpeed;
+    }
+    
+    //if (game.physics.arcade.collide(paddle, ball){
+        //ballDir = ballSpeed;
+    
+//}
+}
+
+</script>
+
+</body>
+</html>

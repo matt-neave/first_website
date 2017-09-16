@@ -19,6 +19,10 @@ app.get('/gifs', function (req, res) {
     res.sendfile('assets/gifs.html');
 });
 
+app.get('/breaker', function (req, res) {
+    res.sendfile('assets/blockbreaker.html');
+});
+
 app.get('/motion', function(req, res) {
 	console.log("Motion detected");
 	request("https://maker.ifttt.com/trigger/web_button_is_pressed/with/key/l9uHDHqqI570kbcVJ9_jFummpIxMaD069ZRJXvCHLuW", function (error, response, body) {
