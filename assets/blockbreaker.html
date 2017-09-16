@@ -19,9 +19,11 @@
     </style>
 </head>
 <body>
-
+    
+<div class="transbox">
 <h1>Block Breaker</h1>
-
+<div>
+    
 <script type="text/javascript">
     
 
@@ -39,6 +41,7 @@ var paddle;
 var paddleWidth
 var ball; 
 var ballDir;
+var ballDirX;
 var ballSpeed;
 var ballSize; 
 
@@ -55,6 +58,7 @@ function create() {
     
     ballSpeed = 5
     ballDir = -ballSpeed;
+    ballDirX = ballSpeed;
 
 
     ballSize = 10
@@ -70,7 +74,7 @@ function update() {
 
     paddle.x = game.input.mousePointer.x - (paddle.width/2);
     ball.y -= ballDir;
-    
+    ball.x -= ballDirX;
     
     if (ball.y + ballSize> paddle.y - ballSize && ball.x > paddle.x && ball.x + ballSize < paddle.x + paddleWidth){
         ballDir = ballSpeed;
@@ -81,10 +85,15 @@ function update() {
         ballDir = -ballSpeed;
     }
     
-    //if (game.physics.arcade.collide(paddle, ball){
-        //ballDir = ballSpeed;
+    if (ball.x < 0){
+        ballDirX = -ballSpeed;
+    }
     
-//}
+    if (ball.x > 800){
+        ballDirX = ballSpeed;
+    }
+    
+    
 }
 
 </script>
