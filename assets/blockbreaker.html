@@ -34,6 +34,7 @@ function preload() {
     game.load.image('sky', 'assets/sky.png');
     game.load.image('paddle', 'assets/reactangle.jpg');
     game.load.image('circle', 'assets/circle.png');
+    game.load.image('brick', 'assets/brick.png');
 
 }
 
@@ -46,6 +47,7 @@ var ballSpeed;
 var ballSize; 
 var lives; 
 var start;
+var bricks;
 
 function create() {
 
@@ -72,7 +74,18 @@ function create() {
     ball.y = paddle.y - ballSize;
     start = false;
     
+    bricks = game.add.group();
+    
+    for (var j = 0; j < 4; j++){
+        for (var i = 0; i < 7; i++)
+        {
+            
+            var brick = bricks.create(i * 60 + 200, j * 40 + 50, 'brick');
+
+        }
+    }
     game.input.onDown.add(releaseBall, this);
+    
     
 }
 
