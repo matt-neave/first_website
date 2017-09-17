@@ -45,11 +45,13 @@ var ballDirX;
 var ballSpeed;
 var ballSize; 
 var lives; 
+var start;
 
 function create() {
 
   
     game.physics.startSystem(Phaser.Physics.ARCADE);
+
     
     game.add.sprite(0, 0, 'sky');
     
@@ -57,7 +59,7 @@ function create() {
     paddle = game.add.sprite(200  ,500, 'paddle');
     
     
-    ballSpeed = 5
+    ballSpeed = 0
     ballDir = -ballSpeed;
     ballDirX = ballSpeed;
 
@@ -66,16 +68,41 @@ function create() {
     ballSize = 10
     ball = game.add.sprite(ballSize, ballSize, 'circle');
     
-    ball.x = 400;
-    ball.y = 20;
-  
+    ball.x = paddle.x + paddle.width/2;
+    ball.y = paddle.y - ballSize;
+    start = false;
+    
+    game.input.onDown.add(releaseBall, this);
+    
+}
+
+function releaseBall () {
+
+    if (start === false)
+    {
+        start = true;
+        ballSpeed = 5
+        ballDir = -ballSpeed;
+        ballDirX = ballSpeed;
+    }
+
 }
 
 function update() {
 
     paddle.x = game.input.mousePointer.x - (paddle.width/2);
+    
     ball.y -= ballDir;
     ball.x -= ballDirX;
+    
+ /*   if (game.input.onDown.add = true){
+        start = true;
+    }
+*/
+    if (start === false){
+        ball.x = paddle.x + paddle.width/2;
+        ball.y = paddle.y - ballSize;
+    }
     
     if (ball.y + ballSize> paddle.y - ballSize && ball.x > paddle.x && ball.x + ballSize < paddle.x + paddleWidth){
         ballDir = ballSpeed;
