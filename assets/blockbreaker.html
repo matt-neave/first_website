@@ -70,11 +70,17 @@ function create() {
     ballSize = 10
     ball = game.add.sprite(ballSize, ballSize, 'circle');
     
+  //  game.physics.enable(ball, Phaser.Physics.ARCADE);
+    
     ball.x = paddle.x + paddle.width/2;
     ball.y = paddle.y - ballSize;
     start = false;
     
+
+    
+    
     bricks = game.add.group();
+    bricks.enableBody = true;
     
     for (var j = 0; j < 4; j++){
         for (var i = 0; i < 7; i++)
@@ -95,6 +101,8 @@ function releaseBall () {
     {
         start = true;
         ballSpeed = 5
+        
+        //ball.body
         ballDir = -ballSpeed;
         ballDirX = ballSpeed;
     }
@@ -108,16 +116,20 @@ function update() {
     ball.y -= ballDir;
     ball.x -= ballDirX;
     
- /*   if (game.input.onDown.add = true){
-        start = true;
-    }
-*/
+  //  game.physics.arcade.collide(ball, bricks, killBlock, null, this);
+    
+    /*for (var i = 0, len = bricks.children.length; i < len; i++) {
+        
+        if(ball.x > bricks[i].x){
+            console.log("HEY")
+        }
+    }*/
     if (start === false){
         ball.x = paddle.x + paddle.width/2;
         ball.y = paddle.y - ballSize;
     }
     
-    if (ball.y + ballSize> paddle.y - ballSize && ball.x > paddle.x && ball.x + ballSize < paddle.x + paddleWidth){
+    if (ball.y + ballSize> paddle.y - ballSize && ball.x > paddle.x && ball.x + ballSize < paddle.x + paddleWidth && ball.y < paddle.y + 20){
         ballDir = ballSpeed;
     }
     
@@ -125,6 +137,7 @@ function update() {
     if (ball.y < 0){
         ballDir = -ballSpeed;
     }
+    
     
     if (ball.x < 0){
         ballDirX = -ballSpeed;
@@ -134,9 +147,14 @@ function update() {
         ballDirX = ballSpeed;
     }
     
-    
+    if (ball.y > 600){
+        start = false
+    }
 }
 
+function killBlock() {
+    block.kill();
+}
 </script>
 
 </body>
