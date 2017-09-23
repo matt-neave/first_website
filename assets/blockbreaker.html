@@ -112,7 +112,7 @@ function releaseBall () {
     if (start === false)
     {
         start = true;
-        ballSpeed = 5
+        ballSpeed = 1
         
         //ball.body
         ballDir = -ballSpeed;
@@ -127,21 +127,18 @@ function update() {
     
     ball.y -= ballDir;
     ball.x -= ballDirX;
+   
     
-  //  game.physics.arcade.collide(ball, bricks, killBlock, null, this);
+    bricks.forEachAlive(killBlock, this); 
     
-    /*for (var i = 0, len = bricks.children.length; i < len; i++) {
         
-        if(ball.x > bricks[i].x){
-            console.log("HEY")
-        }
-    }*/
+    
     if (start === false){
         ball.x = paddle.x + paddle.width/2;
         ball.y = paddle.y - ballSize;
     }
     
-    if (ball.y + ballSize> paddle.y - ballSize && ball.x > paddle.x && ball.x + ballSize < paddle.x + paddleWidth && ball.y < paddle.y + 20){
+    if (ball.y + ballSize> paddle.y && ball.x > paddle.x && ball.x + ballSize < paddle.x + paddleWidth && ball.y < paddle.y + 20){
         ballDir = ballSpeed;
     }
     
@@ -155,18 +152,38 @@ function update() {
         ballDirX = -ballSpeed;
     }
     
-    if (ball.x > 800){
+    if (ball.x + ballSize > 800){
         ballDirX = ballSpeed;
     }
     
-    if (ball.y > 600){
+    if (ball.y + ballSize > 600){
         start = false
     }
 }
 
-function killBlock() {
-    block.kill();
+function killBlock (block) {
+    //bottom
+    if (ball.y === block.y +25 && ball.x + ballSize > block.x && ball.x < block.x + 50) {  
+        ballDir = ballDir * -1
+        block.kill();
+    }
+    //left
+    if (ball.x +ballSize === block.x  && ball.y + ballSize > block.y && ball.y  < block.y + 25) {  
+        ballDirX = ballDirX * -1
+        block.kill();
+    }
+    //right
+    if (ball.x  === block.x + 50 && ball.y +ballSize > block.y && ball.y  < block.y + 25) {  
+        ballDirX = ballDirX * -1
+        block.kill();
+    }
+    //top
+    if (ball.y + ballSize === block.y && ball.x + ballSize > block.x && ball.x < block.x + 50) {  
+        ballDir = ballDir * -1
+        block.kill();
+    }
 }
+
 </script>
 
 </body>
