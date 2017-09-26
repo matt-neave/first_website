@@ -43,8 +43,8 @@ var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create
 
 function preload() {
 
-    game.load.image('sky', 'assets/overwatch.jpg');
-    game.load.image('paddle', 'assets/reactangle.jpg');
+    game.load.image('sky', 'assets/sky.png');
+    game.load.image('paddle', 'assets/maths.jpg');
     game.load.image('circle', 'assets/circle.png');
     game.load.image('brick', 'assets/brick.png');
 
@@ -79,7 +79,7 @@ function create() {
 
     lives = 3;
     
-    ballSize = 10
+    ballSize = 15
     ball = game.add.sprite(ballSize, ballSize, 'circle');
     
   //  game.physics.enable(ball, Phaser.Physics.ARCADE);
@@ -140,6 +140,18 @@ function update() {
     
     if (ball.y + ballSize> paddle.y && ball.x > paddle.x && ball.x + ballSize < paddle.x + paddleWidth && ball.y < paddle.y + 20){
         ballDir = ballSpeed;
+        
+        if (ball.x + ballSize< paddle.x + paddle.width/2 - 20){
+            ballDirX = ballSpeed;
+            
+        }
+        else if (ball.x > paddle.width/2 + 20){
+            ballDirX = -ballSpeed;
+        }
+        else {
+                console.log("HEY")
+        }
+        
     }
     
     
