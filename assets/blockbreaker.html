@@ -60,7 +60,7 @@ var ballSize;
 var lives; 
 var start;
 var bricks;
-
+var paddleSideW;
 function create() {
 
   
@@ -87,7 +87,7 @@ function create() {
     ball.x = paddle.x + paddle.width/2;
     ball.y = paddle.y - ballSize;
     start = false;
-    
+    paddleSideW = 0.45; // between 0-0.5
 
     
     
@@ -141,15 +141,18 @@ function update() {
     if (ball.y + ballSize> paddle.y && ball.x > paddle.x && ball.x + ballSize < paddle.x + paddleWidth && ball.y < paddle.y + 20){
         ballDir = ballSpeed;
         
-        if (ball.x + ballSize< paddle.x + paddle.width/2 - 20){
+         console.log((paddle.x  + paddleWidth) - (paddle.width * paddleSideW) )
+         console.log(ball.x)
+        
+        if (ball.x + ballSize< paddle.x + paddle.width*paddleSideW){
             ballDirX = ballSpeed;
             
         }
-        else if (ball.x > paddle.width/2 + 20){
+        else if (ball.x > (paddle.x  + paddleWidth) - (paddle.width * paddleSideW) ){
             ballDirX = -ballSpeed;
         }
         else {
-                console.log("HEY")
+                ballDirX = 0;
         }
         
     }

@@ -1,9 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
+    
+
+  
+  
 <title>Home</title>
 <link rel="stylesheet" type="text/css" href="mystyle.css">
+<link rel="stylesheet" type="text/css" href="css/dashboard.css">
+<script src="js/jquery-3.2.1.min.js"></script>
 <script src="location.js"></script>
+<script src="js/dashboard.js"></script>
 
 </head>
 
@@ -39,12 +46,13 @@
 
 
 
+
 <br>
 <div class="boxed">
-	<p>Enter your name and surname!</p>
+	<p>Enter the colour and brightness</p>
 </div>
 
-<form action="https://maker.ifttt.com/trigger/button_lights/with/key/l9uHDHqqI570kbcVJ9_jFummpIxMaD069ZRJXvCHLuW" method="post">
+<form action="https://maker.ifttt.com/trigger/button_lights/with/key/l9uHDHqqI570kbcVJ9_jFummpIxMaD069ZRJXvCHLuW" method="post" >
 	
     Colour:
     
@@ -66,10 +74,37 @@
     <button class="my-button-css" name="led" value="Switch Light">Do Brightness!</button>
 </form>
 
+
+
 <br>
 
 
-<iframe src="https://discordapp.com/widget?id=290892029368729600&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0"></iframe>
+<iframe src="https://discordapp.com/widget?id=290892029368729600&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" align="right"></iframe>
+
+<div class="cog">
+    <img src="cog.png">
+</div>
+
+<div class="dashboard">
+    <div class="button">
+        <a href="https://maker.ifttt.com/trigger/button_pressed/with/key/l9uHDHqqI570kbcVJ9_jFummpIxMaD069ZRJXvCHLuW">Lights On</a>
+    </div>
+    
+    <div class="button">
+        <a href="https://maker.ifttt.com/trigger/button_flash/with/key/l9uHDHqqI570kbcVJ9_jFummpIxMaD069ZRJXvCHLuW">Flash Lights</a>
+    </div>
+    
+    <div class="button">
+        <a href="https://maker.ifttt.com/trigger/rand_colour/with/key/l9uHDHqqI570kbcVJ9_jFummpIxMaD069ZRJXvCHLuW">Rdm Colour</a>
+    </div>
+    
+    <div class="button">
+        <a href="https://maker.ifttt.com/trigger/button_off/with/key/l9uHDHqqI570kbcVJ9_jFummpIxMaD069ZRJXvCHLuW">Lights Off</a>
+    </div>
+    
+    
+    
+</div>
 
 </body>
 </html>
