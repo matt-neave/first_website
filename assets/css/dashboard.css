@@ -52,9 +52,15 @@
     font-size: 30px;
     
     margin: 10px;
-  
+    font-family: 'Indie Flower', cursive;
+    -webkit-transition-duration: 0.4s; 
+    transition-duration: 0.4s;
 }
 
+
+.button:hover{
+    background-color: #008b8b; 
+}
 .button>a{
     text-decoration: none;
     color: white;

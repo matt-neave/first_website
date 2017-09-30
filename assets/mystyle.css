@@ -94,6 +94,7 @@ li a:hover {
     border-radius: 2px;
     -webkit-transition-duration: 0.4s; 
     transition-duration: 0.4s;
+    
 }
 
 .my-button-css:hover {
