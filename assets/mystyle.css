@@ -10,6 +10,12 @@ h1 {
 	color: black;
 }
 
+h2 { 
+	/*background-color: red;*/
+	text-align: center;
+	color: black;
+}
+
 /*.boxed { 
   margin: 2px;
   width: 200px;

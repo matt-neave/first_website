@@ -2,6 +2,8 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var request = require('request');
+var db = require('./db.js');
+var bcrypt = require('bcrypt')
 
 app.use(express.static('assets'));
 app.use(bodyParser.json({limit: '20mb'}));
@@ -11,6 +13,43 @@ app.use(bodyParser.urlencoded({extended: true, limit: '20mb'}));
 ledstatus = "green";
 location = "unknown";
 
+app.post('/login', function (req, res) {
+		db ('users').select().where({email: req.body.email})
+			.then(function(data) {
+			if(data.length) {
+				bcrypt.compare(req.body.password, data[0].password)
+				.then(function (hashRes) {
+					if (hashRes) {
+						res.send('correct login information')
+					}
+					else {
+						res.send('incorrect login information')
+					}
+				});
+			
+				
+				
+			}
+			else { 
+				res.send('email doesnt exist')
+			}
+	});
+});
+
+app.post('/signup', function(req,res) {
+	if (req.body.password) {
+		bcrypt.hash(req.body.password, 10).
+		then(function (hash) {
+			db('users').insert({
+					email: req.body.email, password: hash
+				})
+			.then(function (data) { 
+				res.send(data)
+			});
+		});
+	}
+});
+	
 app.get('/', function (req, res) {
     res.sendfile('assets/index.html');
 });
